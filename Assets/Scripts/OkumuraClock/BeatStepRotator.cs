@@ -29,7 +29,7 @@ public class BeatStepRotator : MonoBehaviour
         _rectTransform = (RectTransform)transform;
 
         if (_clock == null)
-            _clock = FindFirstObjectByType<CountdownClock>();
+            _clock = FindAnyObjectByType<CountdownClock>();
 
         if (_clock != null)
             return;
