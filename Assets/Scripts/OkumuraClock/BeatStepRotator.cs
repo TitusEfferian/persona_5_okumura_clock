@@ -1,10 +1,11 @@
+using System;
 using UnityEngine;
 
 [AddComponentMenu("UI/Okumura Clock/Beat Step Rotator")]
 [RequireComponent(typeof(RectTransform))]
 public class BeatStepRotator : MonoBehaviour
 {
-    [Tooltip("Countdown whose beats drive the steps. Left empty, the first CountdownClock in the scene is used.")]
+    [Tooltip("Required. Countdown whose beats drive the steps. Assign it in the Inspector.")]
     [SerializeField]
     private CountdownClock _clock;
 
@@ -28,30 +29,20 @@ public class BeatStepRotator : MonoBehaviour
     {
         _rectTransform = (RectTransform)transform;
 
-        if (_clock == null)
-            _clock = FindAnyObjectByType<CountdownClock>();
-
         if (_clock != null)
             return;
 
-        Debug.LogError("BeatStepRotator needs a CountdownClock in the scene.", this);
-        enabled = false;
+        throw new InvalidOperationException($"{nameof(BeatStepRotator)} on '{name}' requires a CountdownClock assigned in the Inspector.");
     }
 
     private void OnEnable()
     {
-        if (_clock == null)
-            return;
-
         _clock.Beat += OnBeat;
         OnBeat(_clock.SecondsRemaining);
     }
 
     private void OnDisable()
     {
-        if (_clock == null)
-            return;
-
         _clock.Beat -= OnBeat;
     }
 
