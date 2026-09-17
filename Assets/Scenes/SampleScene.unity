@@ -529,8 +529,6 @@ MonoBehaviour:
   _widthAtTip: 32
   _skewAtBase: 0
   _skewAtTip: 0
-  _borderWidth: 0
-  _borderColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!222 &798752136
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -649,8 +647,6 @@ MonoBehaviour:
   _widthAtTip: 20.4
   _skewAtBase: 11
   _skewAtTip: 41.3
-  _borderWidth: 0
-  _borderColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!222 &967475085
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -720,8 +716,6 @@ MonoBehaviour:
   _widthAtTip: 52
   _skewAtBase: 0
   _skewAtTip: 0
-  _borderWidth: 0
-  _borderColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!222 &1502894278
 CanvasRenderer:
   m_ObjectHideFlags: 0
