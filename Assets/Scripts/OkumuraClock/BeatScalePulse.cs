@@ -23,9 +23,9 @@ public class BeatScalePulse : MonoBehaviour
     [SerializeField]
     private AnimationCurve _shape = CreateDefaultShape();
 
-    [Tooltip("Also pulse on the beat fired when the countdown starts.")]
+    [Tooltip("Also pulse on the beat fired when the countdown starts. Off by default, so the first pulse lands one second in, with the first visible hand step.")]
     [SerializeField]
-    private bool _pulseOnFirstBeat = true;
+    private bool _pulseOnFirstBeat = false;
 
     private RectTransform _rectTransform;
     private Vector3 _baseScale;
