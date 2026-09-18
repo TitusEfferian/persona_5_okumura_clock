@@ -479,6 +479,8 @@ GameObject:
   - component: {fileID: 798752134}
   - component: {fileID: 798752136}
   - component: {fileID: 798752135}
+  - component: {fileID: 798752137}
+  - component: {fileID: 798752138}
   m_Layer: 5
   m_Name: RandomClockHand
   m_TagString: Untagged
@@ -537,6 +539,65 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 798752133}
   m_CullTransparentMesh: 1
+--- !u!114 &798752137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798752133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2e4dbc211ad490489525f44b0f8beab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ClockRandomSwing
+  _clock: {fileID: 1620585437}
+  _swingsPerSecond: 3
+  _clockwiseChance: 0.58
+  _clockwiseMinDegrees: 45
+  _clockwiseMaxDegrees: 100
+  _counterClockwiseMinDegrees: 100
+  _counterClockwiseMaxDegrees: 150
+  _ease:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &798752138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798752133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e6ece27080db204898669e49395bf4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ClockScaleJitter
+  _clock: {fileID: 1620585437}
+  _changesPerSecond: 30
+  _minMultiplier: 0.7
+  _maxMultiplier: 1.2
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
