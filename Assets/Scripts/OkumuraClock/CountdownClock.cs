@@ -31,6 +31,10 @@ public class CountdownClock : MonoBehaviour
 
     public int SecondsRemaining => Mathf.Max(0, _durationSeconds - Mathf.FloorToInt(_elapsed));
 
+    public bool UsesUnscaledTime => _useUnscaledTime;
+
+    public float DeltaTime => _useUnscaledTime ? Time.unscaledDeltaTime : Time.deltaTime;
+
     private void Start()
     {
         if (_playOnStart)
@@ -42,7 +46,7 @@ public class CountdownClock : MonoBehaviour
         if (!IsRunning)
             return;
 
-        _elapsed += _useUnscaledTime ? Time.unscaledDeltaTime : Time.deltaTime;
+        _elapsed += DeltaTime;
 
         int remaining = SecondsRemaining;
 
