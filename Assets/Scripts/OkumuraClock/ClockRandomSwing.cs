@@ -43,6 +43,10 @@ public class ClockRandomSwing : MonoBehaviour
     [SerializeField]
     private AnimationCurve _ease = CreateDefaultEase();
 
+    [Tooltip("Also swing during the first second, before the countdown has ticked. Off by default, so the first swing starts one second in, with the first visible hand step. While waiting, the hand holds its angle, and a swing already in flight finishes first.")]
+    [SerializeField]
+    private bool _swingBeforeFirstTick = false;
+
     private RectTransform _rectTransform;
     private Quaternion _baseRotation;
     private float _angle;
@@ -91,6 +95,12 @@ public class ClockRandomSwing : MonoBehaviour
 
     private void StartSwingOnNewInterval()
     {
+        if (!_swingBeforeFirstTick && _clock.SecondsRemaining == _clock.DurationSeconds)
+        {
+            _lastIndex = -1;
+            return;
+        }
+
         int index = Mathf.FloorToInt(_clock.Elapsed * _swingsPerSecond);
 
         if (index == _lastIndex)
