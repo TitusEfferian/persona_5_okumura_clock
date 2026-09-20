@@ -24,6 +24,10 @@ public class ClockScaleJitter : MonoBehaviour
     [SerializeField]
     private float _maxMultiplier = 1.2f;
 
+    [Tooltip("Also jitter the scale during the first second, before the countdown has ticked. Off by default, so the first scale change lands one second in, with the first visible hand step. While waiting, the base scale is restored.")]
+    [SerializeField]
+    private bool _jitterBeforeFirstTick = false;
+
     private RectTransform _rectTransform;
     private Vector3 _baseScale;
     private int _lastIndex;
@@ -51,7 +55,7 @@ public class ClockScaleJitter : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (!_clock.IsRunning)
+        if (!_clock.IsRunning || IsWaitingForFirstTick())
         {
             RestoreBaseScale();
             return;
@@ -67,6 +71,11 @@ public class ClockScaleJitter : MonoBehaviour
         float multiplier = UnityEngine.Random.Range(_minMultiplier, _maxMultiplier);
 
         _rectTransform.localScale = new Vector3(_baseScale.x * multiplier, _baseScale.y * multiplier, _baseScale.z);
+    }
+
+    private bool IsWaitingForFirstTick()
+    {
+        return !_jitterBeforeFirstTick && _clock.SecondsRemaining == _clock.DurationSeconds;
     }
 
     private void RestoreBaseScale()
