@@ -70,7 +70,7 @@ public static class OkumuraWebPublish
 
         PlayerSettings.SetScriptingBackend(web, ScriptingImplementation.IL2CPP);
         PlayerSettings.SetApiCompatibilityLevel(web, ApiCompatibilityLevel.NET_Standard);
-        PlayerSettings.SetManagedStrippingLevel(web, ManagedStrippingLevel.Medium);
+        PlayerSettings.SetManagedStrippingLevel(web, ManagedStrippingLevel.High);
         PlayerSettings.stripEngineCode = true;
         PlayerSettings.SetIl2CppCodeGeneration(web, Il2CppCodeGeneration.OptimizeSize);
         PlayerSettings.SetIl2CppCompilerConfiguration(web, Il2CppCompilerConfiguration.Master);
