@@ -38,54 +38,11 @@ public static class OkumuraWebPublish
         RunBuild();
     }
 
-    // Editor UI for every option below: Project Settings > Player > Web
     // https://docs.unity3d.com/6000.5/Documentation/Manual/class-PlayerSettingsWebGL.html
     // https://docs.unity3d.com/6000.5/Documentation/Manual/web-optimization-player.html
-    // https://docs.unity3d.com/6000.5/Documentation/Manual/webgl-deploying.html
-    // https://docs.unity3d.com/6000.5/Documentation/Manual/web-build-settings.html
-    // API
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/PlayerSettings-defaultWebScreenWidth.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/PlayerSettings-defaultWebScreenHeight.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/PlayerSettings-runInBackground.html
+    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/PlayerSettings.html
     // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/PlayerSettings.WebGL.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/PlayerSettings.WebGL-compressionFormat.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/WebGLCompressionFormat.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/PlayerSettings.WebGL-decompressionFallback.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/PlayerSettings.WebGL-dataCaching.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/PlayerSettings.WebGL-nameFilesAsHashes.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/PlayerSettings.WebGL-debugSymbolMode.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/WebGLDebugSymbolMode.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/PlayerSettings.WebGL-showDiagnostics.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/PlayerSettings.WebGL-exceptionSupport.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/WebGLExceptionSupport.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/PlayerSettings.WebGL-powerPreference.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/WebGLPowerPreference.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/PlayerSettings.WebGL-linkerTarget.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/WebGLLinkerTarget.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/PlayerSettings.WebGL-wasm2023.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/PlayerSettings.WebGL-webAssemblyTable.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/PlayerSettings.WebGL-webAssemblyBigInt.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/PlayerSettings.WebGL-threadsSupport.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/PlayerSettings.WebGL-initialMemorySize.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/PlayerSettings.WebGL-memoryGrowthMode.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/WebGLMemoryGrowthMode.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/Build.NamedBuildTarget.WebGL.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/PlayerSettings.SetScriptingBackend.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/ScriptingImplementation.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/PlayerSettings.SetApiCompatibilityLevel.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/ApiCompatibilityLevel.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/PlayerSettings.SetManagedStrippingLevel.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/ManagedStrippingLevel.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/PlayerSettings-stripEngineCode.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/PlayerSettings.SetIl2CppCodeGeneration.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/Build.Il2CppCodeGeneration.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/PlayerSettings.SetIl2CppCompilerConfiguration.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/Il2CppCompilerConfiguration.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/PlayerSettings-colorSpace.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/ColorSpace.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/PlayerSettings.SetUseDefaultGraphicsAPIs.html
     // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/WebGL.WasmCodeOptimization.html
-    // UnityEditor.WebGL.UserBuildSettings has no reference page; the WasmCodeOptimization page shows its use.
     private static void ApplyPlayerSettings()
     {
         NamedBuildTarget web = NamedBuildTarget.WebGL;
@@ -127,19 +84,9 @@ public static class OkumuraWebPublish
 #endif
     }
 
-    // Editor UI: Project Settings > Quality, the Web column of the platform matrix
     // https://docs.unity3d.com/6000.5/Documentation/Manual/class-QualitySettings.html
-    // m_PerPlatformDefaultQuality is a serialized field of ProjectSettings/QualitySettings.asset with no public API, hence SerializedObject.
-    // API
     // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/QualitySettings.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/AssetDatabase.LoadAllAssetsAtPath.html
     // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/SerializedObject.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/SerializedProperty.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/SerializedProperty-arraySize.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/SerializedProperty.GetArrayElementAtIndex.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/SerializedProperty.FindPropertyRelative.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/SerializedObject.ApplyModifiedPropertiesWithoutUndo.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/EditorUtility.SetDirty.html
     private static void ApplyQualitySettings()
     {
         UnityEngine.Object[] objects = AssetDatabase.LoadAllAssetsAtPath(QualitySettingsPath);
@@ -181,13 +128,8 @@ public static class OkumuraWebPublish
         EditorUtility.SetDirty(objects[0]);
     }
 
-    // Editor UI: select Assets/Settings/PC_RPAsset, Inspector sections Quality (HDR) and Lighting (shadows)
     // https://docs.unity3d.com/6000.5/Documentation/Manual/urp/universalrp-asset.html
-    // API (supportsHDR has a setter; the shadow flags are read-only, hence SerializedObject)
     // https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@17.5/api/UnityEngine.Rendering.Universal.UniversalRenderPipelineAsset.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/AssetDatabase.LoadAssetAtPath.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/SerializedObject.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/EditorUtility.SetDirty.html
     private static void ApplyUrpAssetSettings()
     {
         UniversalRenderPipelineAsset rp = AssetDatabase.LoadAssetAtPath<UniversalRenderPipelineAsset>(PcRpAssetPath);
@@ -216,23 +158,9 @@ public static class OkumuraWebPublish
         p.boolValue = value;
     }
 
-    // Editor UI: File > Build Profiles > Web (scene list, Build, Publish to Play)
     // https://docs.unity3d.com/6000.5/Documentation/Manual/web-build-settings.html
-    // https://docs.unity3d.com/6000.5/Documentation/Manual/webgl-building.html
-    // API
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/EditorBuildSettings-scenes.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/EditorBuildSettingsScene.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/BuildPlayerOptions.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/BuildTarget.WebGL.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/BuildTargetGroup.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/BuildOptions.html
     // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/BuildPipeline.BuildPlayer.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/Build.Reporting.BuildReport.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/Build.Reporting.BuildSummary.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/Build.Reporting.BuildResult.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/Build.BuildFailedException.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/EditorUtility.DisplayDialog.html
-    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/MenuItem.html
+    // https://docs.unity3d.com/6000.5/Documentation/ScriptReference/BuildPlayerOptions.html
     private static void RunBuild()
     {
         if (!File.Exists(ScenePath))
