@@ -27,6 +27,14 @@ public class TaperedQuad : MaskableGraphic
     [SerializeField]
     private float _skewAtTip = 0f;
 
+    [Tooltip("Draw the RectTransform's rect behind the hand, to see the width that SyncRectWidth keeps in step with the corners.")]
+    [SerializeField]
+    private bool _showRect = false;
+
+    [Tooltip("Colour of the rect fill. Alpha below 1 lets the hand and whatever is behind it show through.")]
+    [SerializeField]
+    private Color _rectColor = new Color(1f, 1f, 1f, 0.25f);
+
     public float WidthAtBase
     {
         get => _widthAtBase;
@@ -87,6 +95,32 @@ public class TaperedQuad : MaskableGraphic
         }
     }
 
+    public bool ShowRect
+    {
+        get => _showRect;
+        set
+        {
+            if (_showRect == value)
+                return;
+
+            _showRect = value;
+            SetVerticesDirty();
+        }
+    }
+
+    public Color RectColor
+    {
+        get => _rectColor;
+        set
+        {
+            if (_rectColor == value)
+                return;
+
+            _rectColor = value;
+            SetVerticesDirty();
+        }
+    }
+
     protected override void OnPopulateMesh(VertexHelper vh)
     {
         vh.Clear();
@@ -95,6 +129,9 @@ public class TaperedQuad : MaskableGraphic
 
         if (rect.height <= 0f)
             return;
+
+        if (_showRect)
+            AddQuad(vh, new Vector2(rect.xMin, rect.yMin), new Vector2(rect.xMin, rect.yMax), new Vector2(rect.xMax, rect.yMax), new Vector2(rect.xMax, rect.yMin), _rectColor);
 
         var (bottomLeft, topLeft, topRight, bottomRight) = GetCorners(rect.center.x, rect.yMin, rect.height);
 
