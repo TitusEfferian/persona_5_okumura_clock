@@ -1,0 +1,17 @@
+# CSharpier ignore list (gitignore syntax, https://csharpier.com/docs/Ignore)
+# CSharpier already honours .gitignore; these are repeated so the intent is
+# explicit even if .gitignore changes.
+
+# Unity-generated / build output
+Library/
+Temp/
+obj/
+Builds/
+Logs/
+UserSettings/
+
+# Package cache and third-party code
+Packages/
+
+# Unity template code shipped with the project (not ours to format)
+Assets/TutorialInfo/
