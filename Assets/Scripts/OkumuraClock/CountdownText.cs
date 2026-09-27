@@ -19,7 +19,9 @@ public class CountdownText : MonoBehaviour
         if (_clock != null)
             return;
 
-        throw new InvalidOperationException($"{nameof(CountdownText)} on '{name}' requires a CountdownClock assigned in the Inspector.");
+        throw new InvalidOperationException(
+            $"{nameof(CountdownText)} on '{name}' requires a CountdownClock assigned in the Inspector."
+        );
     }
 
     private void OnEnable()

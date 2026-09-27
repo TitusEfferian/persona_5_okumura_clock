@@ -19,11 +19,15 @@ public class BeatScalePulse : MonoBehaviour
     [SerializeField]
     private float _duration = 0.115f;
 
-    [Tooltip("Normalized pulse shape. X is time from 0 to 1, Y is 0 at the base scale and 1 at the peak scale.")]
+    [Tooltip(
+        "Normalized pulse shape. X is time from 0 to 1, Y is 0 at the base scale and 1 at the peak scale."
+    )]
     [SerializeField]
     private AnimationCurve _shape = CreateDefaultShape();
 
-    [Tooltip("Also pulse on the beat fired when the countdown starts. Off by default, so the first pulse lands one second in, with the first visible hand step.")]
+    [Tooltip(
+        "Also pulse on the beat fired when the countdown starts. Off by default, so the first pulse lands one second in, with the first visible hand step."
+    )]
     [SerializeField]
     private bool _pulseOnFirstBeat = false;
 
@@ -50,7 +54,9 @@ public class BeatScalePulse : MonoBehaviour
         if (_clock != null)
             return;
 
-        throw new InvalidOperationException($"{nameof(BeatScalePulse)} on '{name}' requires a CountdownClock assigned in the Inspector.");
+        throw new InvalidOperationException(
+            $"{nameof(BeatScalePulse)} on '{name}' requires a CountdownClock assigned in the Inspector."
+        );
     }
 
     private void OnEnable()
@@ -81,7 +87,11 @@ public class BeatScalePulse : MonoBehaviour
 
         float scale = Mathf.LerpUnclamped(1f, _peakScale, _shape.Evaluate(_time / _duration));
 
-        _rectTransform.localScale = new Vector3(_baseScale.x * scale, _baseScale.y * scale, _baseScale.z);
+        _rectTransform.localScale = new Vector3(
+            _baseScale.x * scale,
+            _baseScale.y * scale,
+            _baseScale.z
+        );
     }
 
     private void OnBeat(int secondsRemaining)
@@ -98,7 +108,8 @@ public class BeatScalePulse : MonoBehaviour
         AnimationCurve shape = new AnimationCurve(
             new Keyframe(0f, 0f, 0f, 0f),
             new Keyframe(0.435f, 1f, 4.6f, -2.12f),
-            new Keyframe(1f, 0f, -1.2f, 0f));
+            new Keyframe(1f, 0f, -1.2f, 0f)
+        );
 
         shape.preWrapMode = WrapMode.ClampForever;
         shape.postWrapMode = WrapMode.ClampForever;
