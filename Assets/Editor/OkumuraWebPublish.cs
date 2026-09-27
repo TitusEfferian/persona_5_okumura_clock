@@ -78,9 +78,14 @@ public static class OkumuraWebPublish
         PlayerSettings.SetUseDefaultGraphicsAPIs(BuildTarget.WebGL, true);
 
 #if UNITY_WEBGL
-        UnityEditor.WebGL.UserBuildSettings.codeOptimization = UnityEditor.WebGL.WasmCodeOptimization.DiskSizeLTO;
+        UnityEditor.WebGL.UserBuildSettings.codeOptimization = UnityEditor
+            .WebGL
+            .WasmCodeOptimization
+            .DiskSizeLTO;
 #else
-        Debug.LogWarning("[Okumura] Active platform is not Web. Switch to Web in Build Profiles and run Apply Settings again to set Code Optimization.");
+        Debug.LogWarning(
+            "[Okumura] Active platform is not Web. Switch to Web in Build Profiles and run Apply Settings again to set Code Optimization."
+        );
 #endif
     }
 
@@ -92,14 +97,18 @@ public static class OkumuraWebPublish
         UnityEngine.Object[] objects = AssetDatabase.LoadAllAssetsAtPath(QualitySettingsPath);
         if (objects == null || objects.Length == 0)
         {
-            throw new InvalidOperationException("QualitySettings asset not found at " + QualitySettingsPath);
+            throw new InvalidOperationException(
+                "QualitySettings asset not found at " + QualitySettingsPath
+            );
         }
 
         SerializedObject so = new SerializedObject(objects[0]);
         SerializedProperty map = so.FindProperty("m_PerPlatformDefaultQuality");
         if (map == null)
         {
-            throw new InvalidOperationException("m_PerPlatformDefaultQuality not found on QualitySettings asset.");
+            throw new InvalidOperationException(
+                "m_PerPlatformDefaultQuality not found on QualitySettings asset."
+            );
         }
 
         bool found = false;
@@ -132,7 +141,8 @@ public static class OkumuraWebPublish
     // https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@17.5/api/UnityEngine.Rendering.Universal.UniversalRenderPipelineAsset.html
     private static void ApplyUrpAssetSettings()
     {
-        UniversalRenderPipelineAsset rp = AssetDatabase.LoadAssetAtPath<UniversalRenderPipelineAsset>(PcRpAssetPath);
+        UniversalRenderPipelineAsset rp =
+            AssetDatabase.LoadAssetAtPath<UniversalRenderPipelineAsset>(PcRpAssetPath);
         if (rp == null)
         {
             throw new InvalidOperationException("URP asset not found at " + PcRpAssetPath);
@@ -177,7 +187,7 @@ public static class OkumuraWebPublish
             locationPathName = BuildDir,
             target = BuildTarget.WebGL,
             targetGroup = BuildTargetGroup.WebGL,
-            options = BuildOptions.None
+            options = BuildOptions.None,
         };
 
         BuildReport report = BuildPipeline.BuildPlayer(options);
@@ -185,12 +195,24 @@ public static class OkumuraWebPublish
 
         if (summary.result != BuildResult.Succeeded)
         {
-            string message = "Web build " + summary.result + ": " + summary.totalErrors + " error(s).";
+            string message =
+                "Web build " + summary.result + ": " + summary.totalErrors + " error(s).";
             EditorUtility.DisplayDialog("Okumura Web Build", message, "OK");
             throw new BuildFailedException(message);
         }
 
-        Debug.Log("[Okumura] Web build succeeded: " + (summary.totalSize / (1024f * 1024f)).ToString("F1") + " MB in " + summary.totalTime + ". Output: " + Path.GetFullPath(BuildDir));
-        EditorUtility.DisplayDialog("Okumura Web Build", "Build succeeded. Open File > Build Profiles and click Publish to Play to upload Builds/Web.", "OK");
+        Debug.Log(
+            "[Okumura] Web build succeeded: "
+                + (summary.totalSize / (1024f * 1024f)).ToString("F1")
+                + " MB in "
+                + summary.totalTime
+                + ". Output: "
+                + Path.GetFullPath(BuildDir)
+        );
+        EditorUtility.DisplayDialog(
+            "Okumura Web Build",
+            "Build succeeded. Open File > Build Profiles and click Publish to Play to upload Builds/Web.",
+            "OK"
+        );
     }
 }

@@ -32,7 +32,9 @@ public class BeatStepRotator : MonoBehaviour
         if (_clock != null)
             return;
 
-        throw new InvalidOperationException($"{nameof(BeatStepRotator)} on '{name}' requires a CountdownClock assigned in the Inspector.");
+        throw new InvalidOperationException(
+            $"{nameof(BeatStepRotator)} on '{name}' requires a CountdownClock assigned in the Inspector."
+        );
     }
 
     private void OnEnable()

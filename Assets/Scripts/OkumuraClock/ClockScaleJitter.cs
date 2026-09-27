@@ -5,11 +5,15 @@ using UnityEngine;
 [RequireComponent(typeof(RectTransform))]
 public class ClockScaleJitter : MonoBehaviour
 {
-    [Tooltip("Required. Countdown whose elapsed time schedules the jitter. Assign it in the Inspector.")]
+    [Tooltip(
+        "Required. Countdown whose elapsed time schedules the jitter. Assign it in the Inspector."
+    )]
     [SerializeField]
     private CountdownClock _clock;
 
-    [Tooltip("Number of new random scales rolled per second of countdown time. Each value is held until the next change.")]
+    [Tooltip(
+        "Number of new random scales rolled per second of countdown time. Each value is held until the next change."
+    )]
     [Min(0.01f)]
     [SerializeField]
     private float _changesPerSecond = 30f;
@@ -24,7 +28,9 @@ public class ClockScaleJitter : MonoBehaviour
     [SerializeField]
     private float _maxMultiplier = 1.2f;
 
-    [Tooltip("Also jitter the scale during the first second, before the countdown has ticked. Off by default, so the first scale change lands one second in, with the first visible hand step. While waiting, the base scale is restored.")]
+    [Tooltip(
+        "Also jitter the scale during the first second, before the countdown has ticked. Off by default, so the first scale change lands one second in, with the first visible hand step. While waiting, the base scale is restored."
+    )]
     [SerializeField]
     private bool _jitterBeforeFirstTick = false;
 
@@ -40,7 +46,9 @@ public class ClockScaleJitter : MonoBehaviour
         if (_clock != null)
             return;
 
-        throw new InvalidOperationException($"{nameof(ClockScaleJitter)} on '{name}' requires a CountdownClock assigned in the Inspector.");
+        throw new InvalidOperationException(
+            $"{nameof(ClockScaleJitter)} on '{name}' requires a CountdownClock assigned in the Inspector."
+        );
     }
 
     private void OnEnable()
@@ -70,7 +78,11 @@ public class ClockScaleJitter : MonoBehaviour
 
         float multiplier = UnityEngine.Random.Range(_minMultiplier, _maxMultiplier);
 
-        _rectTransform.localScale = new Vector3(_baseScale.x * multiplier, _baseScale.y * multiplier, _baseScale.z);
+        _rectTransform.localScale = new Vector3(
+            _baseScale.x * multiplier,
+            _baseScale.y * multiplier,
+            _baseScale.z
+        );
     }
 
     private bool IsWaitingForFirstTick()

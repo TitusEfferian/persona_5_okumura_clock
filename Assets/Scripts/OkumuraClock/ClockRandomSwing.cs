@@ -5,16 +5,22 @@ using UnityEngine;
 [RequireComponent(typeof(RectTransform))]
 public class ClockRandomSwing : MonoBehaviour
 {
-    [Tooltip("Required. Countdown whose elapsed time schedules the swings. Assign it in the Inspector.")]
+    [Tooltip(
+        "Required. Countdown whose elapsed time schedules the swings. Assign it in the Inspector."
+    )]
     [SerializeField]
     private CountdownClock _clock;
 
-    [Tooltip("Number of swings started per second of countdown time. Each swing eases over the whole interval, with no hold.")]
+    [Tooltip(
+        "Number of swings started per second of countdown time. Each swing eases over the whole interval, with no hold."
+    )]
     [Min(0.01f)]
     [SerializeField]
     private float _swingsPerSecond = 3f;
 
-    [Tooltip("Probability from 0 to 1 that a swing turns clockwise. Otherwise it turns counter-clockwise.")]
+    [Tooltip(
+        "Probability from 0 to 1 that a swing turns clockwise. Otherwise it turns counter-clockwise."
+    )]
     [Range(0f, 1f)]
     [SerializeField]
     private float _clockwiseChance = 0.58f;
@@ -39,11 +45,15 @@ public class ClockRandomSwing : MonoBehaviour
     [SerializeField]
     private float _counterClockwiseMaxDegrees = 150f;
 
-    [Tooltip("Normalized swing easing. X is progress from 0 to 1, Y is the fraction of the swing covered.")]
+    [Tooltip(
+        "Normalized swing easing. X is progress from 0 to 1, Y is the fraction of the swing covered."
+    )]
     [SerializeField]
     private AnimationCurve _ease = CreateDefaultEase();
 
-    [Tooltip("Also swing during the first second, before the countdown has ticked. Off by default, so the first swing starts one second in, with the first visible hand step. While waiting, the hand holds its angle, and a swing already in flight finishes first.")]
+    [Tooltip(
+        "Also swing during the first second, before the countdown has ticked. Off by default, so the first swing starts one second in, with the first visible hand step. While waiting, the hand holds its angle, and a swing already in flight finishes first."
+    )]
     [SerializeField]
     private bool _swingBeforeFirstTick = false;
 
@@ -63,7 +73,9 @@ public class ClockRandomSwing : MonoBehaviour
         if (_clock != null)
             return;
 
-        throw new InvalidOperationException($"{nameof(ClockRandomSwing)} on '{name}' requires a CountdownClock assigned in the Inspector.");
+        throw new InvalidOperationException(
+            $"{nameof(ClockRandomSwing)} on '{name}' requires a CountdownClock assigned in the Inspector."
+        );
     }
 
     private void OnEnable()
@@ -129,7 +141,8 @@ public class ClockRandomSwing : MonoBehaviour
     {
         AnimationCurve ease = new AnimationCurve(
             new Keyframe(0f, 0f, 0f, 2f),
-            new Keyframe(1f, 1f, 0f, 0f));
+            new Keyframe(1f, 1f, 0f, 0f)
+        );
 
         ease.preWrapMode = WrapMode.ClampForever;
         ease.postWrapMode = WrapMode.ClampForever;

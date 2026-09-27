@@ -17,21 +17,29 @@ public class TaperedQuad : MaskableGraphic
     [SerializeField]
     private float _widthAtTip = 12f;
 
-    [Tooltip("Angle of the cut at the base, in degrees away from square. Positive tilts it counter-clockwise, raising the +X corner.")]
+    [Tooltip(
+        "Angle of the cut at the base, in degrees away from square. Positive tilts it counter-clockwise, raising the +X corner."
+    )]
     [Range(-MaxSkew, MaxSkew)]
     [SerializeField]
     private float _skewAtBase = 0f;
 
-    [Tooltip("Angle of the cut at the tip, in degrees away from square. Positive tilts it counter-clockwise, raising the +X corner.")]
+    [Tooltip(
+        "Angle of the cut at the tip, in degrees away from square. Positive tilts it counter-clockwise, raising the +X corner."
+    )]
     [Range(-MaxSkew, MaxSkew)]
     [SerializeField]
     private float _skewAtTip = 0f;
 
-    [Tooltip("Draw the RectTransform's rect behind the hand, to see the width that SyncRectWidth keeps in step with the corners.")]
+    [Tooltip(
+        "Draw the RectTransform's rect behind the hand, to see the width that SyncRectWidth keeps in step with the corners."
+    )]
     [SerializeField]
     private bool _showRect = false;
 
-    [Tooltip("Colour of the rect fill. Alpha below 1 lets the hand and whatever is behind it show through.")]
+    [Tooltip(
+        "Colour of the rect fill. Alpha below 1 lets the hand and whatever is behind it show through."
+    )]
     [SerializeField]
     private Color _rectColor = new Color(1f, 1f, 1f, 0.25f);
 
@@ -131,9 +139,20 @@ public class TaperedQuad : MaskableGraphic
             return;
 
         if (_showRect)
-            AddQuad(vh, new Vector2(rect.xMin, rect.yMin), new Vector2(rect.xMin, rect.yMax), new Vector2(rect.xMax, rect.yMax), new Vector2(rect.xMax, rect.yMin), _rectColor);
+            AddQuad(
+                vh,
+                new Vector2(rect.xMin, rect.yMin),
+                new Vector2(rect.xMin, rect.yMax),
+                new Vector2(rect.xMax, rect.yMax),
+                new Vector2(rect.xMax, rect.yMin),
+                _rectColor
+            );
 
-        var (bottomLeft, topLeft, topRight, bottomRight) = GetCorners(rect.center.x, rect.yMin, rect.height);
+        var (bottomLeft, topLeft, topRight, bottomRight) = GetCorners(
+            rect.center.x,
+            rect.yMin,
+            rect.height
+        );
 
         AddQuad(vh, bottomLeft, topLeft, topRight, bottomRight, color);
     }
@@ -151,7 +170,8 @@ public class TaperedQuad : MaskableGraphic
             Corner(centerX, yMin, -halfBase, -slope, tangentBase),
             Corner(centerX, yMax, -halfTip, -slope, tangentTip),
             Corner(centerX, yMax, halfTip, slope, tangentTip),
-            Corner(centerX, yMin, halfBase, slope, tangentBase));
+            Corner(centerX, yMin, halfBase, slope, tangentBase)
+        );
     }
 
     private static float SkewTangent(float skew, float slope)
@@ -161,14 +181,27 @@ public class TaperedQuad : MaskableGraphic
         return Mathf.Abs(slope * tangent) < 1f ? tangent : 0f;
     }
 
-    private static Vector2 Corner(float centerX, float y, float halfWidth, float slope, float tangent)
+    private static Vector2 Corner(
+        float centerX,
+        float y,
+        float halfWidth,
+        float slope,
+        float tangent
+    )
     {
         float dx = halfWidth / (1f - slope * tangent);
 
         return new Vector2(centerX + dx, y + dx * tangent);
     }
 
-    private static void AddQuad(VertexHelper vh, Vector2 bottomLeft, Vector2 topLeft, Vector2 topRight, Vector2 bottomRight, Color32 color32)
+    private static void AddQuad(
+        VertexHelper vh,
+        Vector2 bottomLeft,
+        Vector2 topLeft,
+        Vector2 topRight,
+        Vector2 bottomRight,
+        Color32 color32
+    )
     {
         int start = vh.currentVertCount;
 
@@ -207,8 +240,19 @@ public class TaperedQuad : MaskableGraphic
         if (this == null)
             return;
 
-        var (bottomLeft, topLeft, topRight, bottomRight) = GetCorners(0f, 0f, rectTransform.rect.height);
-        float width = 2f * Mathf.Max(Mathf.Abs(bottomLeft.x), Mathf.Abs(topLeft.x), Mathf.Abs(topRight.x), Mathf.Abs(bottomRight.x));
+        var (bottomLeft, topLeft, topRight, bottomRight) = GetCorners(
+            0f,
+            0f,
+            rectTransform.rect.height
+        );
+        float width =
+            2f
+            * Mathf.Max(
+                Mathf.Abs(bottomLeft.x),
+                Mathf.Abs(topLeft.x),
+                Mathf.Abs(topRight.x),
+                Mathf.Abs(bottomRight.x)
+            );
 
         Vector2 sizeDelta = rectTransform.sizeDelta;
 
